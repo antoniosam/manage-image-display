@@ -94,11 +94,14 @@ public class ImageOnline {
                 final CacheImage cache = new CacheImage(context);
                 if (cache.hasImage(slugurl(ruta))) {
                     Bitmap bitmap = cache.getImage(slugurl(ruta));
-                    tempCache.saveImage(ruta,bitmap);
-                    if (delegate != null) {
-                        bitmap = delegate.beforeRender(bitmap);
+                    if(bitmap!=null){
+                        tempCache.saveImage(ruta,bitmap);
+                        if (delegate != null) {
+                            bitmap = delegate.beforeRender(bitmap);
+                        }
+                        show(background, view, bitmap);
                     }
-                    show(background, view, bitmap);
+
                 }
                 onDownloadImage = new DownloadImage.onDownloadImage() {
                     @Override
