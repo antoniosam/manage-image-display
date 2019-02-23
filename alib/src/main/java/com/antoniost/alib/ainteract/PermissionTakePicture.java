@@ -93,6 +93,7 @@ public class PermissionTakePicture {
         if(require){
             String[] lista  = new String[]{ Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE };
             if(isActivity){
+                Activity activity = (Activity)context;
                 ActivityCompat.requestPermissions( activity, lista , code);
             }else{
                 fragment.requestPermissions( lista , code);
